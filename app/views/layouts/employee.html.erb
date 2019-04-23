@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cofo管理系统</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+  <body>
+    <div class="ui top fixed inverted red large menu">
+      <div class="item">Cofo管理系统</div>
+      <div class="right menu">
+        <%= link_to "退出", destroy_employee_session_path, method: :delete, class: "item" %>
+      </div>
+    </div>
+    <div class="ui left vertical inverted compact menu fixed" style="height:100vh;margin-top:43px;">
+      <div class="item">
+        <div class="header"><i class="folder icon"></i>项目管理</div>
+        <div class="menu">
+          <%= link_to "项目登记", new_project_path, class: "#{params[:controller] == 'projects' && params[:action] == 'new' ? 'active' : ''} item" %>
+          <%= link_to "项目列表", projects_path, class: "#{params[:controller] == 'projects' && params[:action] != 'new' ? 'active' : ''} item" %>
+        </div>
+      </div>
+      <div class="item">
+        <div class="header"><i class="address card icon"></i>工人管理</div>
+        <div class="menu">
+          <%= link_to "工人信息登记", new_worker_path, class: "#{params[:controller] == 'workers' && params[:action] == 'new' ? 'active' : ''} item" %>
+          <%= link_to "工人信息列表", workers_path, class: "#{params[:controller] == 'workers' && params[:action] != 'new' ? 'active' : ''} item" %>
+          <%= link_to "工人工时登记", new_worker_hour_path, class: "#{params[:controller] == 'worker_hours' && params[:action] == 'new' ? 'active' : ''} item" %>
+          <%= link_to "工人工时列表", worker_hours_path, class: "#{params[:controller] == 'worker_hours' && params[:action] != 'new' ? 'active' : ''} item" %>
+        </div>
+      </div>
+    </div>
+    <div class="ui grid" style="margin-top:3px;margin-left:110px;">
+      <div class="sisteen wide column">
+        <%= yield %>
+      </div>
+    </div>
+    <%= yield :scripts %>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+zh:
+  enums:
+    worker_hour:
+      work_type:
+        gong: 按工计算
+        area: 面积计算
+      status:
+        unpaid: 未结算
+        paid: 已结算

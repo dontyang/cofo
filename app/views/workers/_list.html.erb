@@ -1,0 +1,19 @@
+<tr>
+  <td class="center aligned"><%= worker.name %></td>
+  <td class="center aligned"><%= worker.mobile %></td>
+  <td class="center aligned"><%= worker.idcard_no %></td>
+  <td class="center aligned"><%= worker.idcard_address %></td>
+  <td class="center aligned"><%= worker.sex %></td>
+  <td class="center aligned"><%= worker.bank %>[<%= worker.account_no %>]</td>
+  <td class="center aligned">
+    <%= link_to worker.idcard_front_image.url, target: '_blank' do %>
+      <%= image_tag worker.idcard_front_image.url, width: '50px', height: '50px' %>
+    <% end if worker.idcard_front_image.present? %>
+    <%= link_to worker.idcard_back_image.url, target: '_blank' do %>
+      <%= image_tag worker.idcard_back_image.url, width: '50px', height: '50px' %>
+    <% end if worker.idcard_back_image.present? %>
+  </td>
+  <td class="center aligned">
+    <%= link_to "修改", edit_worker_path(worker), class: "ui red button"  %>
+  </td>
+</tr>

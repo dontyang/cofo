@@ -1,0 +1,31 @@
+<h3 class="ui red header">工人信息列表</h3>
+<div class="ui red segment">
+  <%= simple_form_for @search_params, url: '', method: :get, wrapper: 'semantic_search' do |f| %>
+    <div class="ui five column grid">
+      <%= f.input "name-like", placeholder: '姓名' %>
+      <%= f.input "mobile-like", placeholder: '手机号' %>
+      <div class="column">
+        <%= f.submit '搜索', class: 'ui red button' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="ui segment">
+  <table class="ui selectable striped celled table">
+    <thead>
+      <tr>
+        <th class="center aligned">姓名</th>
+        <th class="center aligned">手机号</th>
+        <th class="center aligned">身份证号</th>
+        <th class="center aligned">地址</th>
+        <th class="center aligned">性别</th>
+        <th class="center aligned">收款账号</th>
+        <th class="center aligned">附件</th>
+        <th class="center aligned">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'list', collection: @workers, as: :worker %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,15 @@
+<tr id="worker_hour_<%= worker_hour.id %>">
+  <td class="center aligned"><%= worker_hour.worker.name %></td>
+  <td class="center aligned"><%= worker_hour.project.name %></td>
+  <td class="center aligned"><%= worker_hour.work_on %></td>
+  <td class="center aligned"><%= worker_hour.work_type_i18n %></td>
+  <td class="center aligned"><%= worker_hour.quantity %><%= worker_hour.gong? ? "个工" : "面积" %></td>
+  <td class="center aligned"><%= number_to_currency worker_hour.amount, unit: "¥" %></td>
+  <td class="center aligned"><%=  worker_hour.status_i18n %></td>
+  <td class="center aligned">
+    <% if worker_hour.unpaid? %>
+      <%= link_to "修改", edit_worker_hour_path(worker_hour), class: "ui red button"  %>
+      <%= link_to "删除", worker_hour_path(worker_hour), remote: true, method: :delete, data: {confirm: "确认删除吗？"}, class: "ui button"  %>
+    <% end %>
+  </td>
+</tr>
