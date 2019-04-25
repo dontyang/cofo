@@ -1,0 +1,25 @@
+<h3 class="ui red header">工时结算</h3>
+<div class="ui red segment">
+  <table class="ui selectable striped celled table">
+    <thead>
+      <tr>
+        <th class="center aligned">工人</th>
+        <th class="center aligned">工时金额</th>
+        <th class="center aligned">借支金额</th>
+        <th class="center aligned">结算金额</th>
+        <th class="center aligned">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @data.each do |k, v| %>
+        <tr>
+          <td class="center aligned"><%= v[:name] %></td>
+          <td class="center aligned"><%= number_to_currency v[:gong_amount], unit: "¥" %></td>
+          <td class="center aligned"><%= number_to_currency v[:advance_amount], unit: "¥" %></td>
+          <td class="center aligned"><%= number_to_currency (v[:gong_amount] - v[:advance_amount]), unit: "¥" %></td>
+          <td class="center aligned"><%= link_to "去结算", new_worker_settle_path(worker_id: k), class: "ui red button" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

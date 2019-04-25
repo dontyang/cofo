@@ -1,0 +1,15 @@
+<tr id="worker_advance_<%= worker_advance.id %>">
+  <td class="center aligned"><%= worker_advance.id %></td>
+  <td class="center aligned"><%= worker_advance.worker.name %></td>
+  <td class="center aligned"><%= number_to_currency worker_advance.amount, unit: "¥" %></td>
+  <td class="center aligned"><%= worker_advance.employee&.name %></td>
+  <td class="center aligned"><%= worker_advance.advance_on %></td>
+  <td class="center aligned"><%=  worker_advance.note %></td>
+  <td class="center aligned"><%=  worker_advance.status_i18n %></td>
+  <td class="center aligned">
+    <% if worker_advance.unpaid? %>
+      <%= link_to "修改", edit_worker_advance_path(worker_advance), class: "ui red button"  %>
+      <%= link_to "删除", worker_advance_path(worker_advance), remote: true, method: :delete, data: {confirm: "确认删除吗？"}, class: "ui button"  %>
+    <% end %>
+  </td>
+</tr>

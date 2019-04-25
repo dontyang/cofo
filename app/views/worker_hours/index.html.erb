@@ -9,13 +9,13 @@
       <div class="column">
         <div class="ui left icon input fluid">
           <i class="calendar icon"></i>
-          <%= f.input_field "created_at-gte", placeholder: '工作日期-起', onfocus: "(this.type='date')", onblur: "(this.type='text')" %>
+          <%= f.input_field "work_on-gte", placeholder: '工作日期-起', onfocus: "(this.type='date')", onblur: "(this.type='text')" %>
         </div>
       </div>
       <div class="column">
         <div class="ui left icon input fluid">
           <i class="calendar icon"></i>
-          <%= f.input_field "created_at-lte", placeholder: '工作日期-始', onfocus: "(this.type='date')", onblur: "(this.type='text')" %>
+          <%= f.input_field "work_on-lte", placeholder: '工作日期-始', onfocus: "(this.type='date')", onblur: "(this.type='text')" %>
         </div>
       </div>
       <div class="column">
@@ -28,6 +28,7 @@
   <table class="ui selectable striped celled table">
     <thead>
       <tr>
+        <th class="center aligned">序号</th>
         <th class="center aligned">工人</th>
         <th class="center aligned">项目</th>
         <th class="center aligned">工作日期</th>
@@ -42,4 +43,5 @@
       <%= render partial: 'list', collection: @worker_hours, as: :worker_hour %>
     </tbody>
   </table>
+  <%= paginate @worker_hours %>
 </div>

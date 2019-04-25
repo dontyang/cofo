@@ -1,0 +1,45 @@
+<h3 class="ui red header">工人借支列表</h3>
+<div class="ui red segment">
+  <%= simple_form_for @search_params, url: '', method: :get, wrapper: 'semantic_search' do |f| %>
+    <div class="ui six column grid">
+      <%= f.input :worker_id, as: :select, collection: Worker.form_options, include_blank: "选择工人", input_html: { class: 'ui fluid dropdown' } %>
+      <%= f.input :employee_id, as: :select, collection: Employee.form_options, include_blank: "选择借支人", input_html: { class: 'ui fluid dropdown' } %>
+      <%= f.input :status, as: :select, collection: WorkerAdvance.statuses_i18n.invert, include_blank: "选择状态", input_html: { class: 'ui fluid dropdown' } %>
+      <div class="column">
+        <div class="ui left icon input fluid">
+          <i class="calendar icon"></i>
+          <%= f.input_field "advance_on-gte", placeholder: '借支日期-起', onfocus: "(this.type='date')", onblur: "(this.type='text')" %>
+        </div>
+      </div>
+      <div class="column">
+        <div class="ui left icon input fluid">
+          <i class="calendar icon"></i>
+          <%= f.input_field "advance_on-lte", placeholder: '借支日期-始', onfocus: "(this.type='date')", onblur: "(this.type='text')" %>
+        </div>
+      </div>
+      <div class="column">
+        <%= f.submit '搜索', class: 'ui red button' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="ui segment">
+  <table class="ui selectable striped celled table">
+    <thead>
+      <tr>
+        <th class="center aligned">序号</th>
+        <th class="center aligned">工人</th>
+        <th class="center aligned">借支金额</th>
+        <th class="center aligned">借支人</th>
+        <th class="center aligned">借支日期</th>
+        <th class="center aligned">备注</th>
+        <th class="center aligned">状态</th>
+        <th class="center aligned">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'list', collection: @worker_advances, as: :worker_advance %>
+    </tbody>
+  </table>
+  <%= paginate @worker_advances %>
+</div>

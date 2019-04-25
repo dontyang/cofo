@@ -28,6 +28,9 @@ gem 'kaminari'
 gem 'simple_form'
 gem 'enum_help'
 gem 'carrierwave'
+gem "roo", "~> 2.8.0"
+gem "roo-xls"
+
 
 group :development, :test do
   gem 'factory_bot'

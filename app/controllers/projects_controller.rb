@@ -2,7 +2,7 @@ class ProjectsController < BaseController
 
   def index
     @search_params = SearchParams.new(params[:search_params])
-    @projects = Project.default_where(@search_params.attributes(self)).order(id: :desc)
+    @projects = Project.default_where(@search_params.attributes(self)).order(id: :desc).page(params[:page])
   end
 
   def new

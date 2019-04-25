@@ -13,6 +13,7 @@
   <table class="ui selectable striped celled table">
     <thead>
       <tr>
+        <th class="center aligned">序号</th>
         <th class="center aligned">项目名称</th>
         <th class="center aligned">项目地址</th>
         <th class="center aligned">计划开始时间</th>
@@ -25,4 +26,5 @@
       <%= render partial: 'list', collection: @projects, as: :project %>
     </tbody>
   </table>
+  <%= paginate @projects %>
 </div>

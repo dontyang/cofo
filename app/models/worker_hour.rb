@@ -1,7 +1,7 @@
 class WorkerHour < ApplicationRecord
 
-  belongs_to :project
-  belongs_to :worker
+  belongs_to :project, optional: true
+  belongs_to :worker, optional: true
 
   enum work_type: {
     gong: 0,
@@ -12,4 +12,5 @@ class WorkerHour < ApplicationRecord
     unpaid: 0,
     paid: 1
   }
+
 end

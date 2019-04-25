@@ -2,7 +2,7 @@ class WorkersController < BaseController
 
   def index
     @search_params = SearchParams.new(params[:search_params])
-    @workers = Worker.default_where(@search_params.attributes(self)).order(id: :desc)
+    @workers = Worker.default_where(@search_params.attributes(self)).order(id: :desc).page(params[:page])
   end
 
   def new

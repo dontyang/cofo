@@ -14,6 +14,7 @@
   <table class="ui selectable striped celled table">
     <thead>
       <tr>
+        <th class="center aligned">序号</th>
         <th class="center aligned">姓名</th>
         <th class="center aligned">手机号</th>
         <th class="center aligned">身份证号</th>
@@ -28,4 +29,5 @@
       <%= render partial: 'list', collection: @workers, as: :worker %>
     </tbody>
   </table>
+  <%= paginate @workers %>
 </div>

@@ -2,7 +2,7 @@ class WorkerHoursController < BaseController
 
   def index
     @search_params = SearchParams.new(params[:search_params] || {status: :unpaid})
-    @worker_hours = WorkerHour.includes(:worker, :project).default_where(@search_params.attributes(self)).order(id: :desc)
+    @worker_hours = WorkerHour.includes(:worker, :project).default_where(@search_params.attributes(self)).order(work_on: :desc).page(params[:page])
   end
 
   def new

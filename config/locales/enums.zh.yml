@@ -7,3 +7,7 @@ zh:
       status:
         unpaid: 未结算
         paid: 已结算
+    worker_advance:
+      status:
+        unpaid: 未结算
+        paid: 已结算
