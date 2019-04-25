@@ -13,7 +13,7 @@
         <%= link_to "退出", destroy_employee_session_path, method: :delete, class: "item" %>
       </div>
     </div>
-    <div class="ui left vertical inverted compact menu fixed" style="height:100vh;margin-top:43px;">
+    <div class="ui left vertical inverted menu fixed" style="height:100vh;margin-top:43px;">
       <div class="item">
         <div class="header"><i class="folder icon"></i>项目管理</div>
         <div class="menu">
@@ -30,12 +30,12 @@
           <%= link_to "工时列表", worker_hours_path, class: "#{params[:controller] == 'worker_hours' && params[:action] != 'new' ? 'active' : ''} item" %>
           <%= link_to "借支登记", new_worker_advance_path, class: "#{params[:controller] == 'worker_advances' && params[:action] == 'new' ? 'active' : ''} item" %>
           <%= link_to "借支列表", worker_advances_path, class: "#{params[:controller] == 'worker_advances' && params[:action] != 'new' ? 'active' : ''} item" %>
-          <%= link_to "工时结算", to_be_settled_worker_settles_path, class: "#{params[:controller] == 'worker_settles' && ['to_be_settled','new'].include?(params[:action]) ? 'active' : ''} item" %>
-          <%= link_to "结算列表", worker_settles_path, class: "#{params[:controller] == 'worker_settles' && !['to_be_settled','new'].include?(params[:action]) ? 'active' : ''} item" %>
+          <%= link_to "未结算列表", to_be_settled_worker_settles_path, class: "#{params[:controller] == 'worker_settles' && ['to_be_settled','new'].include?(params[:action]) ? 'active' : ''} item" %>
+          <%= link_to "已结算列表", worker_settles_path, class: "#{params[:controller] == 'worker_settles' && !['to_be_settled','new'].include?(params[:action]) ? 'active' : ''} item" %>
         </div>
       </div>
     </div>
-    <div class="ui grid" style="margin-top:3px;margin-left:110px;">
+    <div class="ui grid" style="margin-top:3px;margin-left:210px;margin-right:5px;">
       <div class="sisteen wide column">
         <%= yield %>
       </div>

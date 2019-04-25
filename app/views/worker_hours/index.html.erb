@@ -1,7 +1,7 @@
 <h3 class="ui red header">工人工时列表</h3>
 <div class="ui red segment">
   <%= simple_form_for @search_params, url: '', method: :get, wrapper: 'semantic_search' do |f| %>
-    <div class="ui seven column grid">
+    <div class="ui six column grid">
       <%= f.input :worker_id, as: :select, collection: Worker.form_options, include_blank: "选择工人", input_html: { class: 'ui fluid dropdown' } %>
       <%= f.input :project_id, as: :select, collection: Project.form_options, include_blank: "选择项目", input_html: { class: 'ui fluid dropdown' } %>
       <%= f.input :work_type, as: :select, collection: WorkerHour.work_types_i18n.invert, include_blank: "选择结算类型", input_html: { class: 'ui fluid dropdown' } %>

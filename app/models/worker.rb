@@ -5,6 +5,7 @@ class Worker < ApplicationRecord
 
   has_many :worker_hours
   has_many :worker_advances
+  has_many :worker_settles
 
   def self.form_options
     Worker.all.map{|w| [w.name, w.id]}

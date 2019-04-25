@@ -1,7 +1,7 @@
 <h3 class="ui red header">项目列表</h3>
 <div class="ui red segment">
   <%= simple_form_for @search_params, url: '', method: :get, wrapper: 'semantic_search' do |f| %>
-    <div class="ui five column grid">
+    <div class="ui six column grid">
       <%= f.input "name-like", placeholder: '项目名称' %>
       <div class="column">
         <%= f.submit '搜索', class: 'ui red button' %>
@@ -15,10 +15,8 @@
       <tr>
         <th class="center aligned">序号</th>
         <th class="center aligned">项目名称</th>
+        <th class="center aligned">开工时间</th>
         <th class="center aligned">项目地址</th>
-        <th class="center aligned">计划开始时间</th>
-        <th class="center aligned">计划结束时间</th>
-        <th class="center aligned">工程造价</th>
         <th class="center aligned">操作</th>
       </tr>
     </thead>

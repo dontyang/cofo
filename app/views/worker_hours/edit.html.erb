@@ -1,18 +1,22 @@
 <h3 class="ui red header">工人工时修改</h3>
 <div class="ui red segment">
   <%= simple_form_for @worker_hour, url: worker_hour_path(@worker_hour) do |f| %>
-  <div class="seven fields">
-    <%= f.input :worker_id, as: :select, label: '工人', collection: Worker.form_options, include_blank: "选择工人", input_html: { class: 'ui fluid dropdown' } %>
-    <%= f.input :project_id, as: :select, label: '项目', collection: Project.form_options, include_blank: "选择项目", input_html: { class: 'ui fluid dropdown' } %>
-    <%= f.input :work_on, as: :string, label: '工作日期', input_html: {onfocus: "(this.type='date')", onblur: "(this.type='text')"} %>
-    <%= f.input :work_type, as: :select, label: '结算类型', collection: WorkerHour.work_types_i18n.invert, include_blank: "选择结算类型", input_html: { class: 'ui fluid dropdown' } %>
-    <%= f.input :quantity, label: "工数/面积", input_html: {onchange: "calculate_amount();"} %>
-    <div class="field">
-      <label>单价</label>
-      <input type="number" step="any" id="single_price" onchange="calculate_amount();" value="<%= @worker_hour.amount / @worker_hour.quantity %>">
+    <div class="four fields">
+      <%= f.input :worker_id, as: :select, label: '工人', collection: Worker.form_options, include_blank: "选择工人", input_html: { class: 'ui fluid dropdown' } %>
+      <%= f.input :project_id, as: :select, label: '项目', collection: Project.form_options, include_blank: "选择项目", input_html: { class: 'ui fluid dropdown' } %>
     </div>
-    <%= f.input :amount, label: "工资", input_html: {readonly: ""}, wrapper_html: {class: "disabled"} %>
-  </div>
+    <div class="four fields">
+      <%= f.input :work_on, as: :string, label: '工作日期', input_html: {onfocus: "(this.type='date')", onblur: "(this.type='text')"} %>
+      <%= f.input :work_type, as: :select, label: '结算类型', collection: WorkerHour.work_types_i18n.invert, include_blank: "选择结算类型", input_html: { class: 'ui fluid dropdown' } %>
+    </div>
+    <div class="four fields">
+      <%= f.input :quantity, label: "工数/面积", input_html: {onchange: "calculate_amount();"} %>
+      <div class="field">
+        <label>单价</label>
+        <input type="number" step="any" id="single_price" onchange="calculate_amount();">
+      </div>
+      <%= f.input :amount, label: "工资", input_html: {readonly: ""}, wrapper_html: {class: "disabled"} %>
+    </div>
     <%= f.submit "提交", class: "ui red button" %>
   <% end %>
 </div>

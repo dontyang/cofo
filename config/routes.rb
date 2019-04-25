@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :workers, except: [:show, :destroy]
   resources :worker_hours, except: [:show]
   resources :worker_advances, except: [:show]
-  resources :worker_settles, only: [:index, :new, :create] do
+  resources :worker_settles, only: [:index, :show, :new, :create] do
     collection do
       get :to_be_settled
     end

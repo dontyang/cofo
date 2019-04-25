@@ -1,0 +1,58 @@
+<h3 class="ui red header">已结算列表</h3>
+<div class="ui red segment">
+  <%= simple_form_for @search_params, url: '', method: :get, wrapper: 'semantic_search' do |f| %>
+    <div class="ui six column grid">
+      <%= f.input :worker_id, as: :select, collection: Worker.form_options, include_blank: "选择工人", input_html: { class: 'ui fluid dropdown' } %>
+      <div class="column">
+        <div class="ui left icon input fluid">
+          <i class="calendar icon"></i>
+          <%= f.input_field "created_at-gte", placeholder: '结算日期-起', onfocus: "(this.type='date')", onblur: "(this.type='text')" %>
+        </div>
+      </div>
+      <div class="column">
+        <div class="ui left icon input fluid">
+          <i class="calendar icon"></i>
+          <%= f.input_field "created_at-lte", placeholder: '结算日期-始', onfocus: "(this.type='date')", onblur: "(this.type='text')" %>
+        </div>
+      </div>
+      <div class="column">
+        <%= f.submit '搜索', class: 'ui red button' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="ui segment">
+  <table class="ui selectable striped celled table">
+    <thead>
+      <tr>
+        <th class="center aligned">序号</th>
+        <th class="center aligned">工人</th>
+        <th class="center aligned">总工数</th>
+        <th class="center aligned">总面积</th>
+        <th class="center aligned">项目总计</th>
+        <th class="center aligned">借支总计</th>
+        <th class="center aligned">应付金额</th>
+        <th class="center aligned">结算日期</th>
+        <th class="center aligned">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @worker_settles.each do |worker_settle| %>
+        <tr>
+          <td class="center aligned"><%= worker_settle.id %></td>
+          <td class="center aligned"><%= worker_settle.worker.name %></td>
+          <td class="center aligned"><%= worker_settle.gong %></td>
+          <td class="center aligned"><%= worker_settle.area %></td>
+          <td class="center aligned"><%= number_to_currency worker_settle.work_amount, unit: "¥" %></td>
+          <td class="center aligned"><%= number_to_currency worker_settle.advance_amount, unit: "¥" %></td>
+          <td class="center aligned"><%= number_to_currency worker_settle.amount, unit: "¥" %></td>
+          <td class="center aligned"><%= worker_settle.created_at.to_date %></td>
+          <td class="center aligned">
+            <%= link_to "查看明细", worker_settle_path(worker_settle), class: "ui button"  %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @worker_settles %>
+</div>

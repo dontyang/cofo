@@ -17,7 +17,7 @@ class ProjectsController < BaseController
   private
 
   def project_params
-    params.require(:project).permit(:name, :address, :start_on, :end_on, :amount)
+    params.require(:project).permit(:name, :address, :start_on, :sigonggongyi, :area, :xianchang, :yangban, :jihua, :shebei, :sigongshuoming)
   end
 
 end

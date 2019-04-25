@@ -1,11 +1,16 @@
 class CreateProjects < ActiveRecord::Migration[5.1]
   def change
     create_table :projects do |t|
-	    t.string :name, comment: "项目名称"
-			t.string :address, comment: "项目地址"
+	    t.string :name
+			t.string :address
 			t.date :start_on
-			t.date :end_on
-			t.decimal :amount, precision: 10, scale: 2
+      t.string :sigonggongyi, limit: 1024
+      t.string :area, limit: 1024
+      t.string :xianchang, limit: 1024
+      t.string :yangban, limit: 1024
+      t.string :jihua, limit: 1024
+      t.string :shebei, limit: 1024
+      t.string :sigongshuoming, limit: 1024
       t.timestamps
     end
   end
