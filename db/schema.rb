@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190424152634) do
+ActiveRecord::Schema.define(version: 20190427124852) do
 
   create_table "employees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -32,12 +32,45 @@ ActiveRecord::Schema.define(version: 20190424152634) do
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
+  create_table "materials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "project_id"
+    t.integer "vendor_id"
+    t.string "name"
+    t.decimal "quantity", precision: 10, scale: 2
+    t.string "unit"
+    t.decimal "amount", precision: 10, scale: 2
+    t.date "purchase_on"
+    t.string "note"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "项目名称"
     t.string "address", comment: "项目地址"
     t.date "start_on"
-    t.date "end_on"
-    t.decimal "amount", precision: 10, scale: 2
+    t.string "sigonggongyi", limit: 1024
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "area", limit: 1024
+    t.string "xianchang", limit: 1024
+    t.string "yangban", limit: 1024
+    t.string "jihua", limit: 1024
+    t.string "shebei", limit: 1024
+    t.string "sigongshuoming", limit: 1024
+  end
+
+  create_table "vendors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", comment: "供应商名称"
+    t.string "contact"
+    t.string "mobile", comment: "联系人手机"
+    t.string "tax_no", comment: "税号"
+    t.string "bank", comment: "开户行"
+    t.string "bank_account_no", comment: "开户行账号"
+    t.string "address", comment: "地址"
+    t.string "tel", comment: "电话"
+    t.string "fax", comment: "传真"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

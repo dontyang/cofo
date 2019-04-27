@@ -1,1 +1,28 @@
-材料模块待开发
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th class="center aligned">材料名称</th>
+      <th class="center aligned">数量</th>
+      <th class="center aligned">供应商</th>
+      <th class="center aligned">采购日期</th>
+      <th class="center aligned">备注</th>
+      <th class="center aligned">价格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @materials.each do |material| %>
+      <tr>
+        <td class="center aligned"><%= material.name %></td>
+        <td class="center aligned"><%= material.quantity %><%= material.unit %></td>
+        <td class="center aligned"><%= material.vendor&.name %></td>
+        <td class="center aligned"><%= material.purchase_on %></td>
+        <td class="center aligned"><%= material.note %></td>
+        <td class="right aligned"><%= number_to_currency material.amount, unit: "¥" %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td class="right aligned"><h4 class="ui red header">总计</h4></td>
+      <td class="right aligned" colspan="5"><h3 class="ui red header"><%= number_to_currency @materials.map{|m| m.amount.to_f}.sum, unit: "¥" %></h3></td>
+    </tr>
+  </tbody>
+</table>

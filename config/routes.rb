@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   post 'baidu/ocr_idcard', to: 'baidu#ocr_idcard'
 
-  resources :projects do
+  resources :projects, only: [:index, :show, :new, :create] do
     collection do
       get :basic_info
       get :worker
@@ -21,5 +21,7 @@ Rails.application.routes.draw do
       get :to_be_settled
     end
   end
+  resources :vendors, except: [:show, :destroy]
+  resources :materials
 
 end

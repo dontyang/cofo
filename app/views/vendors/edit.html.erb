@@ -1,0 +1,25 @@
+<h3 class="ui red header">供应商修改</h3>
+<div class="ui red segment">
+  <%= simple_form_for @vendor, url: vendor_path(@vendor) do |f| %>
+    <div class="four fields">
+      <%= f.input :name, label: '供应商名称' %>
+    </div>
+    <div class="two fields">
+      <%= f.input :address, label: '地址' %>
+    </div>
+    <div class="four fields">
+      <%= f.input :contact, label: '联系人' %>
+      <%= f.input :mobile, label: '联系人手机号' %>
+    </div>
+    <div class="four fields">
+      <%= f.input :tax_no, label: '税号' %>
+      <%= f.input :bank, label: '开户行' %>
+      <%= f.input :bank_account_no, label: '开户行账号' %>
+    </div>
+    <div class="four fields">
+      <%= f.input :tel, label: '电话' %>
+      <%= f.input :fax, label: '传真' %>
+    </div>
+    <%= f.submit "提交", class: "ui red button" %>
+  <% end %>
+</div>

@@ -1,4 +1,4 @@
-<h3 class="ui red header">工人工时列表</h3>
+<h3 class="ui red header">工时列表</h3>
 <div class="ui red segment">
   <%= simple_form_for @search_params, url: '', method: :get, wrapper: 'semantic_search' do |f| %>
     <div class="ui six column grid">
@@ -25,6 +25,7 @@
   <% end %>
 </div>
 <div class="ui segment">
+  <%= link_to "工时登记", new_worker_hour_path, class: "ui red button" %>
   <table class="ui selectable striped celled table">
     <thead>
       <tr>
@@ -33,7 +34,7 @@
         <th class="center aligned">项目</th>
         <th class="center aligned">工作日期</th>
         <th class="center aligned">结算类型</th>
-        <th class="center aligned">工数/面积</th>
+        <th class="center aligned">工时/面积</th>
         <th class="center aligned">工资</th>
         <th class="center aligned">状态</th>
         <th class="center aligned">操作</th>

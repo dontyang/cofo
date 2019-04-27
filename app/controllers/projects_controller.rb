@@ -29,6 +29,7 @@ class ProjectsController < BaseController
   end
 
   def material
+    @materials = @project.materials.includes(:vendor).order(id: :desc)
     render layout: false
   end
 

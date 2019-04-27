@@ -1,0 +1,49 @@
+<h3 class="ui red header">材料修改</h3>
+<div class="ui red segment">
+  <%= simple_form_for @material, url: material_path(@material) do |f| %>
+    <div class="four fields">
+      <%= f.input :name, label: '材料名称' %>
+    </div>
+    <div class="four fields">
+      <div class="field">
+        <label>数量</label>
+        <div class="ui action input">
+          <%= f.input_field :quantity, onchange: "calculate_amount();" %>
+          <%= f.input_field :unit, as: :select, collection: ["Kg", "袋", "桶", "个"], include_blank: false, class: 'ui compact dropdown' %>
+        </div>
+      </div>
+      <div class="field">
+        <label>单价</label>
+        <input type="number" step="any" id="single_price" onchange="calculate_amount();" value="<%= @material.amount / @material.quantity %>">
+      </div>
+      <%= f.input :amount, label: "总价", input_html: {readonly: ""}, wrapper_html: {class: "disabled"} %>
+    </div>
+    <div class="four fields">
+      <%= f.input :vendor_id, as: :select, label: '供应商', collection: Vendor.form_options, include_blank: "选择供应商", input_html: { class: 'ui fluid dropdown' } %>
+      <%= f.input :project_id, as: :select, label: '项目', collection: Project.form_options, include_blank: "选择项目", input_html: { class: 'ui fluid dropdown' } %>
+    </div>
+    <div class="four fields">
+      <%= f.input :purchase_on, as: :string, label: '采购日期', input_html: {onfocus: "(this.type='date')", onblur: "(this.type='text')"} %>
+      <%= f.input :note, label: '备注' %>
+    </div>
+    <%= f.submit "提交", class: "ui red button" %>
+  <% end %>
+</div>
+<script>
+  function calculate_amount(){
+    var quantity = parseFloat($("#material_quantity").val());
+    var single_price = parseFloat($("#single_price").val());
+    if(isNaN(quantity)){
+      quantity = 0
+    }
+    if(isNaN(single_price)){
+      single_price = 0
+    }
+    var amount = (quantity * single_price).toFixed(2);
+    if(amount > 0){
+      $("#material_amount").val(amount);
+    }else{
+      $("#material_amount").val("");
+    }
+  }
+</script>

@@ -24,14 +24,18 @@
       <div class="item">
         <div class="header"><i class="address card icon"></i>工人管理</div>
         <div class="menu">
-          <%= link_to "信息登记", new_worker_path, class: "#{params[:controller] == 'workers' && params[:action] == 'new' ? 'active' : ''} item" %>
-          <%= link_to "信息列表", workers_path, class: "#{params[:controller] == 'workers' && params[:action] != 'new' ? 'active' : ''} item" %>
-          <%= link_to "工时登记", new_worker_hour_path, class: "#{params[:controller] == 'worker_hours' && params[:action] == 'new' ? 'active' : ''} item" %>
-          <%= link_to "工时列表", worker_hours_path, class: "#{params[:controller] == 'worker_hours' && params[:action] != 'new' ? 'active' : ''} item" %>
-          <%= link_to "借支登记", new_worker_advance_path, class: "#{params[:controller] == 'worker_advances' && params[:action] == 'new' ? 'active' : ''} item" %>
-          <%= link_to "借支列表", worker_advances_path, class: "#{params[:controller] == 'worker_advances' && params[:action] != 'new' ? 'active' : ''} item" %>
+          <%= link_to "工人管理", workers_path, class: "#{params[:controller] == 'workers' ? 'active' : ''} item" %>
+          <%= link_to "工时管理", worker_hours_path, class: "#{params[:controller] == 'worker_hours' ? 'active' : ''} item" %>
+          <%= link_to "借支管理", worker_advances_path, class: "#{params[:controller] == 'worker_advances' ? 'active' : ''} item" %>
           <%= link_to "未结算列表", to_be_settled_worker_settles_path, class: "#{params[:controller] == 'worker_settles' && ['to_be_settled','new'].include?(params[:action]) ? 'active' : ''} item" %>
           <%= link_to "已结算列表", worker_settles_path, class: "#{params[:controller] == 'worker_settles' && !['to_be_settled','new'].include?(params[:action]) ? 'active' : ''} item" %>
+        </div>
+      </div>
+      <div class="item">
+        <div class="header"><i class="dolly flatbed icon"></i>材料管理</div>
+        <div class="menu">
+          <%= link_to "供应商管理", vendors_path, class: "#{params[:controller] == 'vendors' ? 'active' : ''} item" %>
+          <%= link_to "材料管理", materials_path, class: "#{params[:controller] == 'materials' ? 'active' : ''} item" %>
         </div>
       </div>
     </div>

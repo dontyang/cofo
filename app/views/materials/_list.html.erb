@@ -1,0 +1,16 @@
+<tr id="material_<%= material.id %>">
+  <td class="center aligned"><%= material.id %></td>
+  <td class="center aligned"><%= material.name %></td>
+  <td class="center aligned"><%= material.quantity %><%= material.unit %></td>
+  <td class="center aligned"><%= number_to_currency material.amount, unit: "¥" %></td>
+  <td class="center aligned"><%= material.vendor&.name %></td>
+  <td class="center aligned"><%= material.project&.name %></td>
+  <td class="center aligned"><%= material.purchase_on %></td>
+  <td class="center aligned"><%= material.note %></td>
+  <td class="center aligned">
+    <% if material.unpaid? %>
+      <%= link_to "修改", edit_material_path(material), class: "ui red button"  %>
+      <%= link_to "删除", material_path(material), remote: true, method: :delete, data: {confirm: "确认删除吗？"}, class: "ui button"  %>
+    <% end %>
+  </td>
+</tr>

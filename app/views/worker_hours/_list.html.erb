@@ -4,7 +4,7 @@
   <td class="center aligned"><%= worker_hour.project.name %></td>
   <td class="center aligned"><%= worker_hour.work_on %></td>
   <td class="center aligned"><%= worker_hour.work_type_i18n %></td>
-  <td class="center aligned"><%= worker_hour.quantity %><%= worker_hour.gong? ? "个工" : "面积" %></td>
+  <td class="center aligned"><%= worker_hour.quantity %><%= worker_hour.gong? ? "工时" : "面积" %></td>
   <td class="center aligned"><%= number_to_currency worker_hour.amount, unit: "¥" %></td>
   <td class="center aligned"><%=  worker_hour.status_i18n %></td>
   <td class="center aligned">

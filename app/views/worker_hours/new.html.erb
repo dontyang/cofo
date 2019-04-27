@@ -1,4 +1,4 @@
-<h3 class="ui red header">工人工时登记</h3>
+<h3 class="ui red header">工时登记</h3>
 <div class="ui red segment">
   <%= simple_form_for @worker_hour, url: worker_hours_path do |f| %>
     <div class="four fields">
@@ -10,7 +10,7 @@
       <%= f.input :work_type, as: :select, label: '结算类型', collection: WorkerHour.work_types_i18n.invert, include_blank: "选择结算类型", input_html: { class: 'ui fluid dropdown' } %>
     </div>
     <div class="four fields">
-      <%= f.input :quantity, label: "工数/面积", input_html: {onchange: "calculate_amount();"} %>
+      <%= f.input :quantity, label: "工时/面积", input_html: {onchange: "calculate_amount();"} %>
       <div class="field">
         <label>单价</label>
         <input type="number" step="any" id="single_price" onchange="calculate_amount();">
@@ -36,6 +36,5 @@
     }else{
       $("#worker_hour_amount").val("");
     }
-    $(".total_price span").html(amount);
   }
 </script>

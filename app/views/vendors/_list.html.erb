@@ -1,0 +1,12 @@
+<tr>
+  <td class="center aligned"><%= vendor.id %></td>
+  <td class="center aligned"><%= vendor.name %></td>
+  <td class="center aligned"><%= vendor.contact %></td>
+  <td class="center aligned"><%= vendor.mobile %></td>
+  <td class="center aligned"><%= vendor.tax_no %></td>
+  <td class="center aligned"><%= vendor.bank %>[<%= vendor.bank_account_no %>]</td>
+  <td class="center aligned"><%= vendor.address %></td>
+  <td class="center aligned">
+    <%= link_to "修改", edit_vendor_path(vendor), class: "ui red button"  %>
+  </td>
+</tr>
