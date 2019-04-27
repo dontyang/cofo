@@ -19,7 +19,7 @@
         </tr>
       <% end %>
       <tr>
-        <td class="right aligned"><h4 class="ui orange header">项目总计</h4></td>
+        <td class="right aligned"><h4 class="ui orange header">工资总计</h4></td>
         <td class="center aligned"><%= @worker_hours.select{|w| w.gong? }.map{|w| w.quantity.to_f}.sum %></td>
         <td class="center aligned"><%= @worker_hours.select{|w| w.area? }.map{|w| w.quantity.to_f}.sum %></td>
         <% worker_hour_amount = @worker_hours.map{|w| w.amount.to_f }.sum %>
@@ -31,7 +31,7 @@
         <td class="right aligned" colspan="3"><h4 class="ui orange header">扣除：<%= number_to_currency worker_advance_amount, unit: "¥" %></h4></td>
       </tr>
       <tr>
-        <td class="right aligned"><h4 class="ui red header">应付金额</h4></td>
+        <td class="right aligned"><h4 class="ui red header">应付工资</h4></td>
         <td class="right aligned" colspan="3"><h3 class="ui red header"><%= number_to_currency (worker_hour_amount - worker_advance_amount), unit: "¥" %></h3></td>
       </tr>
     </tbody>

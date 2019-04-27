@@ -1,7 +1,6 @@
 <tr>
   <td class="center aligned"><%= project.id %></td>
-  <td class="center aligned"><%= project.name %></td>
+  <td class="center aligned"><%= link_to project.name, project_path(project) %></td>
   <td class="center aligned"><%= project.start_on %></td>
   <td class="center aligned"><%= project.address %></td>
-  <td class="center aligned"></td>
 </tr>

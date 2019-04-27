@@ -1,0 +1,28 @@
+<h3 class="ui red header">项目名称：<%= @project.name %></h3>
+<div class="ui red segment">
+  <div class="ui pointing secondary menu" id="project_menu">
+    <a class="item" data-tab="basic_info?id=<%= @project.id %>">基本信息</a>
+    <a class="item" data-tab="worker?id=<%= @project.id %>">工人统计</a>
+    <a class="item" data-tab="material?id=<%= @project.id %>">材料统计</a>
+    <a class="item" data-tab="claiming?id=<%= @project.id %>">报销统计</a>
+    <a class="item" data-tab="report?id=<%= @project.id %>">报表</a>
+  </div>
+  <div class="ui tab segment" data-tab="basic_info?id=<%= @project.id %>"></div>
+  <div class="ui tab segment" data-tab="worker?id=<%= @project.id %>"></div>
+  <div class="ui tab segment" data-tab="material?id=<%= @project.id %>"></div>
+  <div class="ui tab segment" data-tab="claiming?id=<%= @project.id %>"></div>
+  <div class="ui tab segment" data-tab="report?id=<%= @project.id %>"></div>
+</div>
+<%= javascript_include_tag 'highcharts.js' %>
+<%= javascript_include_tag 'highcharts-3d.js' %>
+<script>
+  $('#project_menu .item').tab({
+    cache: false,
+    apiSettings: {
+      loadingDuration : 300
+    },
+    auto : true,
+    path : "/projects"
+  });
+  $("#project_menu .item:first").click();
+</script>

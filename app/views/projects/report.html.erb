@@ -1,0 +1,52 @@
+<div id="container" style="height: 400px"></div>
+
+<script type="text/javascript">
+  Highcharts.chart('container', {
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false,
+      type: 'pie'
+    },
+    title: {
+      text: '图表测试标题'
+    },
+    tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+          style: {
+            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+          }
+        }
+      }
+    },
+    series: [
+      {
+        name: '支出',
+        colorByPoint: true,
+        data: [
+          {
+            name: '工人工资',
+            y: 30
+          }, {
+            name: '材料费',
+            y: 50
+          }, {
+            name: '报销',
+            y: 15
+          }, {
+            name: '其他',
+            y: 5
+          }
+        ]
+      }
+    ]
+  });
+</script>

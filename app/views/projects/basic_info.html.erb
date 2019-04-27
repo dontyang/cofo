@@ -1,0 +1,16 @@
+<table class="ui definition table">
+  <tbody>
+    <tr>
+      <td width="10%">项目名称：</td>
+      <td><%= @project.name %></td>
+    </tr>
+    <tr>
+      <td width="10%">开工时间：</td>
+      <td><%= show_date @project.start_on %></td>
+    </tr>
+    <tr>
+      <td width="10%">项目地址：</td>
+      <td><%= @project.address %></td>
+    </tr>
+  </tbody>
+</table>

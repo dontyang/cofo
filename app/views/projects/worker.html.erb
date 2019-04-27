@@ -1,0 +1,32 @@
+<table class="ui compact celled definition table">
+  <thead>
+    <tr>
+      <th width="10%"></th>
+      <th class="center aligned" width="18%">工时</th>
+      <th class="center aligned" width="18%">面积</th>
+      <th class="center aligned" width="18%">工资</th>
+      <th class="center aligned" width="18%">已结算工资</th>
+      <th class="center aligned" width="18%">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @worker_hours.group_by{|w| w.worker }.each do |worker, hours| %>
+      <tr>
+        <td class="right aligned"><%= worker.name %></td>
+        <td class="center aligned"><%= hours.select{|w| w.gong? }.map{|w| w.quantity.to_f}.sum %></td>
+        <td class="center aligned"><%= hours.select{|w| w.area? }.map{|w| w.quantity.to_f}.sum %></td>
+        <td class="right aligned"><%= number_to_currency hours.map{|w| w.amount.to_f }.sum, unit: "¥" %></td>
+        <td class="right aligned"><%= number_to_currency hours.select{|w| w.paid?}.map{|w| w.amount.to_f }.sum, unit: "¥" %></td>
+        <td class="center aligned"><%= link_to "查看明细", worker_hours_path(search_params: {project_id: @project.id, worker_id: worker.id}), target: "_blank" %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td class="right aligned"><h4 class="ui red header">总计</h4></td>
+      <td class="center aligned"><%= @worker_hours.select{|w| w.gong? }.map{|w| w.quantity.to_f}.sum %></td>
+      <td class="center aligned"><%= @worker_hours.select{|w| w.area? }.map{|w| w.quantity.to_f}.sum %></td>
+      <td class="right aligned"><h4 class="ui red header"><%= number_to_currency @worker_hours.map{|w| w.amount.to_f }.sum, unit: "¥" %></h4></td>
+      <td class="right aligned"><%= number_to_currency @worker_hours.select{|w| w.paid?}.map{|w| w.amount.to_f }.sum, unit: "¥" %></td>
+      <td class="center aligned"><%= link_to "查看明细", worker_hours_path(search_params: {project_id: @project.id}), target: "_blank" %></td>
+    </tr>
+  </tbody>
+</table>
